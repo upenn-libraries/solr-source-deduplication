@@ -50,4 +50,8 @@ all values for `enum` method facets, etc. The `filterCache` is crucial!
 7. Once a (deduplicated) window of results is determined, use the Solr `ExpandComponent` 
 to return other records clustered with a particular result document. The `expand` component
 is usually mentioned in conjunction with the `CollapsingQParser`, but it works just fine (and
-is very useful) in a context with `join`-based domain deduplication (`expand.q=*:*`)
+is very useful) in a context with `join`-based domain deduplication (`expand.q=*:*`). N.b.,
+pending resolution of [SOLR-7798](https://issues.apache.org/jira/browse/SOLR-7798), use of 
+`ExpandComponent` in this manner will require special care (e.g., application of one of the
+patches mentioned in that issue). As of time of writing, for solr v6.6.0, the
+[perSegFacetCache branch of the upenn-libraries/solrplugins project](https://github.com/upenn-libraries/solrplugins/tree/perSegFacetCache) incorporates a patched version of `ExpandComponent`.
